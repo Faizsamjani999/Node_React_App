@@ -1,26 +1,26 @@
-import { ERROR, LOADING, SUCCESS } from "./actionType";
+import { ERROR, LOADING, SECCESS } from "./actionType";
 
 const initial = {
     load : false,
-    msg : "",
-    error : false,
+    data : [],
+    error : false
 }
 
-export const registerReducer = (state=initial,action)=>{
+export const movieReducer = (state=initial,action)=>{
     switch(action.type)
     {
-        case LOADING :
+        case LOADING:
             return{
                 ...state,
                 load : true
-            }
-        case SUCCESS :
+            };
+        case SECCESS:
             return{
                 ...state,
                 load : false,
-                msg : action.payload
+                data : action.payload
             };
-        case ERROR :
+        case ERROR:
             return{
                 ...state,
                 load : false,
@@ -29,3 +29,4 @@ export const registerReducer = (state=initial,action)=>{
         default : return state;
     }
 }
+

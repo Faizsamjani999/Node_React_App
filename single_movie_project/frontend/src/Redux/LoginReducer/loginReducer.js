@@ -1,30 +1,32 @@
-import { ERROR, LOADING, SUCCESS } from "./actionType";
+import { ERROR, Loading, Success } from "./actionType";
 
 const initial = {
     load : false,
+    isLogin : false,
     msg : "",
-    error : false,
+    err: false
 }
 
-export const registerReducer = (state=initial,action)=>{
+export const loginReducer = (state = initial,action)=>{
     switch(action.type)
     {
-        case LOADING :
+        case Loading :
             return{
                 ...state,
                 load : true
-            }
-        case SUCCESS :
+            };
+        case Success :
             return{
                 ...state,
                 load : false,
+                isLogin : true,
                 msg : action.payload
             };
         case ERROR :
             return{
                 ...state,
                 load : false,
-                error : true
+                err : true
             };
         default : return state;
     }

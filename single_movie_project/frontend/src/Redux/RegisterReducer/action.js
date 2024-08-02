@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const registerAction = (dispatch,obj)=>{
+export const registerAction = (dispatch)=>(obj)=>{
     dispatch({type : "LOADING"})
     axios.post("http://localhost:9999/registerData",obj)
     .then((res)=>{
