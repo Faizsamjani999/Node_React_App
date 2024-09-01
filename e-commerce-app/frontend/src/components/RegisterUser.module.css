@@ -1,0 +1,120 @@
+/* RegisterUser.module.css */
+
+/* Centering the form on the page */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* Sign-up form container */
+.signUp {
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form structure */
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form fields styling */
+.field {
+    margin-bottom: 20px;
+}
+
+.inputBordered {
+    margin-bottom: 15px;
+}
+
+.inputBordered label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.inputBordered input[type='text'],
+.inputBordered input[type='email'],
+.inputBordered input[type='password'] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Checkbox styling */
+.inputBordered input[type='checkbox'] {
+    margin-right: 10px;
+    transform: scale(1.5);
+}
+
+/* Password visibility toggle link */
+.togglePassword {
+    cursor: pointer;
+    margin-left: 10px;
+    color: #007BFF;
+}
+
+/* Password strength indicator */
+.passwordStrength {
+    margin-top: 5px;
+    font-weight: bold;
+    color: #007BFF; /* Default color */
+}
+
+/* Colors for different password strengths */
+.passwordStrength.Weak {
+    color: red;
+}
+
+.passwordStrength.Medium {
+    color: orange;
+}
+
+.passwordStrength.Strong {
+    color: green;
+}
+
+/* Submit button */
+.field input[type='submit'] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.field input[type='submit']:hover {
+    background-color: #0056b3;
+}
+
+/* Redirect link for users who are already registered */
+.loginRedirect {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.loginRedirect span {
+    color: #007BFF;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Heading styling */
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
