@@ -1,0 +1,48 @@
+.article-list-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.page-title {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.no-articles {
+    text-align: center;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.article-list {
+    list-style: none;
+    padding: 0;
+}
+
+.article-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.article-item:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}
+
+.article-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.article-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
