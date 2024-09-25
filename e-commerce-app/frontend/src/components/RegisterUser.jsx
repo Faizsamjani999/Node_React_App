@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify'; // Import Toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for Toastify
 import styles from "./RegisterUser.module.css";
 
 function RegisterUser() {
@@ -14,7 +16,7 @@ function RegisterUser() {
 
     const validateForm = () => {
         if (!name || !email || !password) {
-            alert("Please fill out all fields");
+            toast.error("Please fill out all fields"); // Show error toast
             return false;
         }
         return true;
@@ -41,18 +43,23 @@ function RegisterUser() {
                 password,
                 isAdmin,
             });
+            // Clear fields after successful registration
             setName("");
             setEmail("");
             setPassword("");
             setIsAdmin(false);  // Reset isAdmin
-            navigate('/login'); // Redirect to login page after successful registration
+            toast.success("Registration Successful!"); // Show success toast
+            setTimeout(() => {
+                navigate('/login'); // Redirect to login page after successful registration
+            }, 2000);
         } catch (err) {
-            alert("Registration failed. Please try again.");
+            toast.error("Registration failed. Please try again."); // Show error toast
         }
     };
 
     return (
         <div className={styles.center}>
+            <ToastContainer /> {/* Add ToastContainer */}
             <div className={styles.signUp}>
                 <div className={styles.right}>
                     <form onSubmit={handleSubmit}>

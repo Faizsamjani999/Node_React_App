@@ -1,14 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
-import "./CartPage.css"
+import ClipLoader from 'react-spinners/ClipLoader'; // Import loader from react-spinners
+import './CartPage.css';
 
 function CartPage() {
     const { cartItems, removeFromCart, clearCart } = useCart();
-    const navigate = useNavigate(); // Hook to navigate to another page
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true); // State to handle loading
+
+    // Simulate loading for 4-5 seconds
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false); // Stop loading after 4-5 seconds
+        }, 4000);
+        return () => clearTimeout(timer);
+    }, []);
 
     // Calculate total price
     const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
+    if (loading) {
+        return (
+            <div className="loader-container">
+                <ClipLoader color="#3498db" loading={loading} size={80} /> {/* Customize the loader */}
+                <p>Loading Cart...</p>
+            </div>
+        );
+    }
 
     return (
         <div className="cart-page">

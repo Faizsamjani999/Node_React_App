@@ -41,10 +41,8 @@ const Header = () => {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/user/shop">Shop</Link></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pages">Pages</a></li>
-            <li><a href="#blogs">Blogs</a></li>
+            <li><Link to="/user/product-filtering">Products-Filtering</Link></li>
+            
           </ul>
         </nav>
 
@@ -57,12 +55,7 @@ const Header = () => {
 
         {/* Right Section with Search, Cart, and User Icons */}
         <div className="header-right">
-          <div className="header-search">
-            <input type="text" placeholder="Search..." />
-            <button type="submit">
-              <i className="fa fa-search"></i> {/* Font Awesome Search Icon */}
-            </button>
-          </div>
+          
           
           <div className="header-cart">
             <span onClick={() => handleProtectedRoute('/user/cart')}>

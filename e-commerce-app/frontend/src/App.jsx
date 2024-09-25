@@ -15,6 +15,7 @@ import ProfilePage from './components/ProfilePage';
 import PrivateRoute from './components/PrivateRoute';
 import { CartProvider } from './context/CartContext';
 import { UserProvider } from './context/UserContext';
+import ProductListing from './components/ProductListing';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/user/shop" element={<Shop />} />
               <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/user/product-filtering" element={<ProductListing/>} />
               <Route path="/user/cart" element={<PrivateRoute element={CartPage} />} />
               <Route path="/user/check-out" element={<PrivateRoute element={CheckoutPage} />} />
               <Route path="/user/profile" element={<PrivateRoute element={ProfilePage} />} />

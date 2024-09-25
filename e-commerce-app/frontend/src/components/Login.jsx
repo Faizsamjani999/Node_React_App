@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify'; // Import Toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for Toastify
 import styles from "./Login.module.css";
 
 function Login() {
@@ -11,7 +13,7 @@ function Login() {
 
     const validateForm = () => {
         if (!email || !password) {
-            alert("Please fill out all fields");
+            toast.error("Please fill out all fields"); // Show error toast
             return false;
         }
         return true;
@@ -20,37 +22,42 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) return;
-
+    
         try {
             const res = await axios.post("http://localhost:9999/api/auth/login", {
                 email,
                 password
             });
-
+    
             const { token, user } = res.data;
-
+    
             if (token) {
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(user));
                 console.log("Token Set:", localStorage.getItem('token'));
-                if (user.isAdmin) {
-                    navigate('/admin/dashboard');
-                } else {
-                    navigate('/');
-                }
+                toast.success("Login Successful!"); // Show success toast
+    
+                // Redirect after a delay to show the toast
+                setTimeout(() => {
+                    if (user.isAdmin) {
+                        navigate('/admin/dashboard');
+                    } else {
+                        navigate('/');
+                    }
+                }, 2000); // Redirect after 2 seconds
             }
-
+    
             console.log(res.data.message);
-            alert("Login Successful...");
             setEmail("");
             setPassword("");
         } catch (err) {
-            alert("Invalid Credential...");
+            toast.error("Invalid Credential..."); // Show error toast
         }
     };
 
     return (
         <div className={styles.center}>
+            <ToastContainer /> {/* Add ToastContainer */}
             <div className={styles.loginCard}>
                 <form onSubmit={handleSubmit}>
                     <h2>Login</h2>

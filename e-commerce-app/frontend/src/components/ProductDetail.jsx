@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './ProductDetail.css';
 import { Cartcontext } from '../context/CartContext';
 import UserContext from '../context/UserContext';
+import { toast, ToastContainer } from 'react-toastify'; // Import Toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
 
 function ProductDetail() {
     const [product, setProduct] = useState(null);
@@ -30,7 +32,7 @@ function ProductDetail() {
         if (product) {
             if (user) {
                 addToCart(product, quantity);
-                alert('Product added to cart!');
+                toast.success('Product added to cart!'); // Show toast notification
             } else {
                 navigate('/login');
             }
@@ -59,6 +61,7 @@ function ProductDetail() {
 
     return (
         <div className="product-detail-container">
+            <ToastContainer /> {/* Include ToastContainer for toast notifications */}
             <div className="product-image">
                 <img src={product.img || 'https://via.placeholder.com/500'} alt={product.pname} />
             </div>
