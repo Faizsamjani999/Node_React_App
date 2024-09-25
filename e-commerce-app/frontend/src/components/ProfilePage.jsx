@@ -18,11 +18,11 @@ const ProfilePage = () => {
 
     try {
       // Fetch user data
-      const response = await axios.get('http://localhost:9999/api/auth/profile', config);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/auth/profile`, config);
       setUserData(response.data);
       
       // Fetch user orders
-      const ordersResponse = await axios.get('http://localhost:9999/api/orders/user/orders', config);
+      const ordersResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders/user/orders`, config);
       setOrders(ordersResponse.data || []);
 
       setLoading(false);

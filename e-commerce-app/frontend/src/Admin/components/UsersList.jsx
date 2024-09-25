@@ -9,7 +9,7 @@ const UsersList = () => {
         const fetchUsers = async () => {
             const token = localStorage.getItem('token');
             try {
-                const res = await axios.get("http://localhost:9999/api/auth/users", {
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/auth/users`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUsers(res.data);
@@ -23,7 +23,7 @@ const UsersList = () => {
     const handleDelete = async (userId) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.delete(`http://localhost:9999/api/auth/users/${userId}`, {
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/auth/users/${userId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUsers(users.filter(user => user._id !== userId));

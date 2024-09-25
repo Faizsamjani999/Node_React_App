@@ -17,7 +17,7 @@ function ProductList() {
     useEffect(()=>{
         const fetchProduct = async()=>{
             try{
-               const response = await axios("http://localhost:9999/api/product/GetProduct")
+               const response = await axios(`${process.env.REACT_APP_API_URL}/api/product/GetProduct`)
                 // console.log(response);
                 setProducts(response.data)
             }catch(err){
@@ -30,7 +30,7 @@ function ProductList() {
 
     const handleDelete = async(id)=>{
         try{
-          await axios.delete(`http://localhost:9999/api/product/DeleteProduct/${id}`)
+          await axios.delete(`${process.env.REACT_APP_API_URL}/api/product/DeleteProduct/${id}`)
           alert("Product Deleted Successfully...");
           setProducts(()=>{
             return products.filter(val=> val._id !== id)
@@ -53,7 +53,7 @@ function ProductList() {
 
     const handleUpdate = async()=>{
       try{
-        await axios.put(`http://localhost:9999/api/product/UpdateData/${editId}`,editData);
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/product/UpdateData/${editId}`,editData);
         alert("Data Update Successfully...");
 
         setProducts(products.map((val)=>{

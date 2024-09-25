@@ -16,7 +16,7 @@ const ProductListing = () => {
     const fetchProducts = async () => {
       setLoading(true); // Start loader
       try {
-        const response = await axios.get('http://localhost:9999/api/product/GetProduct');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/product/GetProduct`);
         setTimeout(() => {
           setProducts(response.data);
           setFilteredProducts(response.data);

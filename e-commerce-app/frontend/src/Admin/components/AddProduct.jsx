@@ -17,7 +17,7 @@ function AddProduct() {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        axios.post("http://localhost:9999/api/product/AddProduct",productData)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/product/AddProduct`,productData)
         .then(res=>{
             alert("Product Added Successfully...");
             setProductData({

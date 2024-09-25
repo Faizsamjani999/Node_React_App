@@ -37,7 +37,7 @@ function RegisterUser() {
         if (!validateForm()) return;
 
         try {
-            await axios.post("http://localhost:9999/api/auth/register", {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`, {
                 name,
                 email,
                 password,

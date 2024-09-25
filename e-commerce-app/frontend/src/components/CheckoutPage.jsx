@@ -47,7 +47,7 @@ const CheckoutPage = () => {
       };
 
       if (paymentMethod === 'Razorpay') {
-        const { data } = await axios.post('http://localhost:9999/api/orders/razorpay', { amount: orderData.amount }, config);
+        const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/orders/razorpay`, { amount: orderData.amount }, config);
 
         var options = {
           key: process.env.REACT_APP_RAZORPAY_KEY_ID,
@@ -59,7 +59,7 @@ const CheckoutPage = () => {
           handler: async function (response) {
             console.log('Payment Success:', response);
 
-            await axios.post('http://localhost:9999/api/orders/create', orderData, config);
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/orders/create`, orderData, config);
             toast.success('Payment Success and Order Created!'); // Stylish success message
             clearCart();
             resetForm(); // Reset form fields
@@ -77,7 +77,7 @@ const CheckoutPage = () => {
         var rzp = new window.Razorpay(options);
         rzp.open();
       } else {
-        await axios.post('http://localhost:9999/api/orders/create', orderData, config);
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/orders/create`, orderData, config);
         toast.success("Order placed successfully"); // Stylish success message
         clearCart();
         resetForm(); // Reset form fields

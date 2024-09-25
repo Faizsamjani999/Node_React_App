@@ -12,7 +12,7 @@ const Shop = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:9999/api/product/GetProduct');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/product/GetProduct`);
         setProducts(response.data);
         // Set loading to false after 4-5 seconds
         setTimeout(() => {

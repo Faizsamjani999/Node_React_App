@@ -18,7 +18,7 @@ const AdminProtectedRoute = ({ children }) => {
                     return;
                 }
 
-                const res = await axios.get("http://localhost:9999/api/auth/check-admin", {
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/auth/check-admin`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 
