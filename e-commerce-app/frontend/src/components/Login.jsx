@@ -22,12 +22,18 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) return;
+
+        // Debugging the API URL
+        console.log("API URL:", process.env.REACT_APP_API_URL); // <-- Debugging line for API URL
     
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
                 email,
                 password
             });
+
+            // Debugging the response
+            console.log("API Response:", res); // <-- Debugging line for API Response
     
             const { token, user } = res.data;
     
@@ -51,6 +57,8 @@ function Login() {
             setEmail("");
             setPassword("");
         } catch (err) {
+            // Debugging the error response
+            console.error("API Error:", err.response ? err.response.data : err.message); // <-- Debugging line for errors
             toast.error("Invalid Credential..."); // Show error toast
         }
     };
